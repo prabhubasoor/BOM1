@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import { Days } from '../testHelpers/enums';
 
 
-export class BomCityForcastPage {
+export class BomCityForecastPage {
     readonly page : Page;
     private lblRainForecasts = ".forecast .rain em";
 
@@ -14,12 +14,12 @@ export class BomCityForcastPage {
         this.page = page;
     }
 
-    async getRainForcast(day : Days):Promise<number> {
+    async getRainForecast(day : Days):Promise<number> {
         
         const rainForecasts = this.page.locator(this.lblRainForecasts);
         
-        const rainForecastText =  await rainForecasts.nth(day).textContent();
-        return parseInt(rainForecastText);
+        const rainForecastText  = Number(await rainForecasts.nth(day).textContent());
+        return (rainForecastText);
     }
 
 };

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { BomCityForcastPage } from '../pages/bomCityForcastPage';
+import { BomCityForecastPage } from '../pages/bomCityForecastPage';
 import { BomMainPage } from '../pages/bomMainPage';
 import { CityNames, Days } from '../testHelpers/enums';
 import { getDDMMMFormatedDate } from '../testHelpers/dateUtils';
@@ -10,19 +10,20 @@ test.describe('Australian Government Bureau of Meteorology web system Test.', fu
         await page.goto("/");
     });
 
-    test("Verify rain forcast for the Sydney city, 3rd day from today.", async ({page}) => {
+    test("Verify rain forecast for the Sydney city, 3rd day from today.", async ({page}) => {
         //Arrange
         const mainPage = new BomMainPage(page);
-        const cityForcastPage = new BomCityForcastPage(page);
-       
+        const cityForecastPage = new BomCityForecastPage(page);
+        var  expectedRainForecast : number = 50;
+
         //Act
         await mainPage.selectCityName(CityNames.Sydney);
                
-        const rainForcast = await cityForcastPage.getRainForcast(Days.ThirdDay);
+        const actualRainForecast = await cityForecastPage.getRainForecast(Days.ThirdDay);
         const formatedDayMonth = getDDMMMFormatedDate(Days.ThirdDay);
         
         //Assert
-        expect(rainForcast, `Looks like it will a rainy day on ${formatedDayMonth}.`).not.toBeGreaterThan(50);
+        expect(actualRainForecast, `Looks like it will a rainy day on ${formatedDayMonth}.`).not.toBeGreaterThan(expectedRainForecast);
 
     });
 
