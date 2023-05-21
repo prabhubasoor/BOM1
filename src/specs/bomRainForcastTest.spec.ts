@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { BomCityForcastPage } from '../pages/bomCityForcastPage';
 import { BomMainPage } from '../pages/bomMainPage';
-import {CityNames, Days } from '../testHelpers/enums';
+import { CityNames, Days } from '../testHelpers/enums';
 import { getDDMMMFormatedDate } from '../testHelpers/dateUtils';
 
 test.describe('Australian Government Bureau of Meteorology web system Test.', function () {
@@ -24,8 +24,6 @@ test.describe('Australian Government Bureau of Meteorology web system Test.', fu
         //Assert
         expect(rainForcast, `Looks like it will a rainy day on ${formatedDayMonth}.`).not.toBeGreaterThan(50);
 
-        //There is no built-in functionality to display a Pass message. 
-        console.log('\n',"Pass.");
     });
 
 });
