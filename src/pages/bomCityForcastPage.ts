@@ -4,7 +4,7 @@ import { Days } from '../testHelpers/enums';
 
 export class BomCityForcastPage {
     readonly page : Page;
-    readonly lblRainForecasts = ".forecast .rain em";
+    private lblRainForecasts = ".forecast .rain em";
 
     /**
      * @param {import('@playwright/test').Page} page

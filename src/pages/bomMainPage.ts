@@ -4,8 +4,8 @@ import { CityNames } from '../testHelpers/enums';
 
 export class BomMainPage {
     readonly page : Page;
-    readonly lnkCapitals = ".capital a";
-    readonly header = "h1";
+    private lnkCapitals = ".capital a";
+    private header = "h1";
 
     /**
      * @param {import('@playwright/test').Page} page
