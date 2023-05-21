@@ -14,7 +14,7 @@ test.describe('Australian Government Bureau of Meteorology web system Test.', fu
         //Arrange
         const mainPage = new BomMainPage(page);
         const cityForecastPage = new BomCityForecastPage(page);
-        var  expectedRainForecast : number = 50;
+        const expectedRainForecast : number = 50;
 
         //Act
         await mainPage.selectCityName(CityNames.Sydney);
