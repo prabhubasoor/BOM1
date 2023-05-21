@@ -1,9 +1,11 @@
-import { Page } from '@playwright/test';
+import { Page } from 'playwright';
 import { CityNames } from '../testHelpers/enums';
 
 
 export class BomMainPage {
     readonly page : Page;
+    readonly lnkCapitals = ".capital a";
+    readonly header = "h1";
 
     /**
      * @param {import('@playwright/test').Page} page
@@ -16,12 +18,12 @@ export class BomMainPage {
     async selectCityName(cityName : CityNames){
 
         await this.page
-            .locator(".capital a")
+            .locator(this.lnkCapitals)
             .filter({has : this.page.locator(`text="${cityName}"`)})
             .click();
 
         await this.page
-            .locator('h1')
+            .locator(this.header)
             .waitFor();
     }
 };

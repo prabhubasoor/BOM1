@@ -1,9 +1,10 @@
-import { Page} from '@playwright/test';
+import { Page } from 'playwright';
 import { Days } from '../testHelpers/enums';
 
 
 export class BomCityForcastPage {
     readonly page : Page;
+    readonly lblRainForecasts = ".forecast .rain em";
 
     /**
      * @param {import('@playwright/test').Page} page
@@ -15,10 +16,10 @@ export class BomCityForcastPage {
 
     async getRainForcast(day : Days):Promise<number> {
         
-        const rainForcasts = this.page.locator(".forecast .rain em");
+        const rainForecasts = this.page.locator(this.lblRainForecasts);
         
-        const rainForcastText =  await rainForcasts.nth(day).textContent();
-        return parseInt(rainForcastText);
+        const rainForecastText =  await rainForecasts.nth(day).textContent();
+        return parseInt(rainForecastText);
     }
 
 };
